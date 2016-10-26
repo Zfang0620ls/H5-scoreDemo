@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title>评论条</title>
+    <meta name="author" content="" />
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <style>
+    @charset="utf-8";
+    /*reset部分 start*/
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    html {
+        font-family: "Microsoft Yahei", Arial, sans-serif;
+        font-size: 12px;
+    }
+
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,button,textarea,p,th,td {
+        padding: 0;
+        margin: 0;
+        font-family: "Microsoft YaHei", sans-serif, Arial
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0
+    }
+    fieldset,img {
+        border: 0
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+        outline: none
+    }
+    li {
+        list-style: none;
+    }
+    caption,th {
+        text-align: left
+    }
+    h1,h2,h3,h4,h5,h6 {
+        font-weight: normal;
+    }
+
+    input,button,textarea,select,optgroup,option {
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        outline: medium;
+    }
+    input,button,textarea,select {
+        *font-size: 100%
+    }
+    .fl {
+        float: left;
+    }
+    .fr {
+        float: right;
+    }
+    .clear:after {
+        display: block;
+        content: "clear";
+        height: 0;
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+    .clear {
+        zoom: 1;
+    }
+    /*reset部分 end*/
+    .container {
+        position: relative;
+        margin: 0 10px;
+    }
+    .sliderBar {
+        margin: 100px auto;
+        position: relative;
+        width: 100%;
+        height: 16px;
+        border: 1px solid #ef552c;
+        border-radius: 16px;
+        background-color: #fff;
+    }
+    .sliderBar li {
+        position: relative;
+        float: left;
+        width: 10%;
+        height: 16px;
+        line-height: 16px;
+        text-align: center;
+    }
+    .sliderBar li:first-child {
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+    .sliderBar li:last-child {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .item {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: -60px;
+        margin-left: -22px;
+        width: 43px;
+        height: 42px;
+        background: url(imgs/statu-icon1.png) no-repeat center;
+        background-size: 25px;
+        animation: jump 0.3s 2 ease 0s;
+        -webkit-animation: jump 0.3s 2 ease 0s;
+    }
+    .sliderBar li span {
+        position: absolute;
+        left: 35%;
+        top: 20px;
+    }
+    p {
+        text-align: center;
+        margin-top: 15px;
+        color: #333;
+        position: absolute;
+        top: 35px;
+    }
+    p:first-of-type {
+        left: 0;
+    }
+    p:nth-of-type(2) {
+        left: 65%;
+    }
+    p:last-of-type {
+        right: 0;
+    }
+    .bg {
+        position: absolute;
+        top: 14px;
+    }
+    .bg:nth-of-type(2) {
+        width: 60%;
+        height: 24px;
+        left: 1px;
+        background: rgba(203, 203, 203, .3);
+        border-radius: 6px;
+    }
+    .bg:nth-of-type(3) {
+        width: 20%;
+        height: 24px;
+        left: 60%;
+        background: rgba(239, 85, 44, .5);
+        border-radius: 6px;
+    }
+    .bg:nth-of-type(4) {
+        width: 20%;
+        height: 24px;
+        right: 0;
+        background: rgb(239, 85, 44);
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .heart {
+        width: 26px;
+        height: 22px;
+        position: absolute;
+        left: 0.1%;
+        top: -4px;
+        background: url(imgs/heart.png) no-repeat;
+        background-size: 26px 22px;
+        z-index: 20;
+    }
+    @-webkit-keyframes jump {
+        0% {
+            top: -60px;
+        }
+        50% {
+            top: -68px;
+        }
+        100% {
+            top: -60px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="heart"></div>
+        <div class="bg"></div>
+        <div class="bg"></div>
+        <div class="bg"></div>
+        <ul class="sliderBar clear" id="slider-index">
+            <li>
+                <span>1</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>2</span>
+                <div class="item"> </div>
+            </li>
+            <li>
+                <span>3</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>4</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>5</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>6</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>7</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>8</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>9</span>
+                <div class="item"></div>
+            </li>
+            <li>
+                <span>10</span>
+                <div class="item"></div>
+            </li>
+        </ul>
+        <p>不满意</p>
+        <p>满意</p>
+        <p>很满意</p>
+    </div>
+    <!-- JS部分 -->
+    <script>
+        var arr = []; //定义一个空数组
+        var ULobj = $('#slider-index>li');
+        for (var i = 0; i < ULobj.length; i++) {
+            arr.push(ULobj[i]);
+        }
+        function changeScore(ints) {
+            for (var i = 0; i < arr.length; i++) {
+                if (i <= ints) {
+                    arr[i].style.background = "#ef552c";
+                } else {
+                    arr[i].style.background = "#fff";
+                }
+            }
+        }
+        $(function() {
+            $("#slider-index>li").each(function(i) {
+                var i = i + 1;
+                if (i > 8) {
+                    $(this).children("span").css("color", "#fff");
+                } else if (i > 6) {
+                    $(this).children("span").css("color", "#ca4b29");
+                } else {
+                    $(this).children("span").css("color", "#626262");
+                }
+                $(this).click(function() {
+                    $(this).children(".item").show();
+                    $(this).siblings().children(".item").hide();
+                    var number = $(this).index();
+                    var num = number + 1;
+                    $(".heart").css("left", (number * 10 + 3.7) + "%");
+                    console.log(num);
+                    var $j = $("#slider-index>li").length;
+                    changeScore(number);
+                    if (num > 8) {
+                        $(this).children(".item").css({
+                            "background": "url(imgs/statu-icon3.png) no-repeat center",
+                            "background-size": "25px"
+                        });
+                    } else if (num > 6) {
+                        $(this).children(".item").css({
+                            "background": "url(imgs/statu-icon2.png) no-repeat center",
+                            "background-size": "25px"
+                        });
+                    } else {
+                        $(this).children(".item").css({
+                            "background": "url(imgs/statu-icon1.png) no-repeat center",
+                            "background-size": "25px"
+                        });
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
